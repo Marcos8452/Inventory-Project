@@ -16,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/admin', require('./routes/adminRoutes'));
 
 // Health check
 app.get('/', (req, res) => {
@@ -25,3 +26,6 @@ app.use('/api/auth', require('./routes/authRoutes'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server listening on port ${PORT}`));
+
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/auth', authRoutes);
