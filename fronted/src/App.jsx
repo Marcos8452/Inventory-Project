@@ -16,6 +16,7 @@ import Layout from './components/Layout';
 import Dashboard from './components/Admin/AdminDashboard';
 import MainPage from './components/MainPage';
 import CreateStock from './components/Admin/CreateStock';
+import SearchByCode from './components/SearchByCode';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/mangerdashboard' element={<MangerDashboard />} />
         <Route path='/staffdashboard' element={<StaffDashboard />} />
         <Route path='/inventorysearch' element={<InventorySearch />} />
+        <Route path='/searchbycode' element={<SearchByCode />} />
         <Route path='/createorder' element={<CreateOrder />} />
         <Route path='/checkstock' element={<CheckStock />} />
         <Route path='/createstock' element={<CreateStock />} />

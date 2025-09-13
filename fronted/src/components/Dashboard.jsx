@@ -6,6 +6,15 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = e => {
+  e.preventDefault();
+  if (searchQuery.trim()) {
+    navigate(`/searchbycode?query=${encodeURIComponent(searchQuery.trim())}`);
+    setSearchQuery('');
+  }
+};
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Clear JWT
@@ -83,14 +92,16 @@ export default function Navbar() {
         </ul>
 
         {/* Right: Search bar */}
-        <div>
+        <form onSubmit={handleSearch} className="flex items-center space-x-2">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Search by Code or Name"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
             className="px-3 py-1 rounded border border-gray-300 text-black"
           />
+        </form>
         </div>
-      </div>
     </nav>
     </>
   );

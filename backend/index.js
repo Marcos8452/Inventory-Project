@@ -29,3 +29,6 @@ app.listen(PORT, () => console.log(`🚀 Server listening on port ${PORT}`));
 
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes);
+
+const productRoutes = require('./routes/productRoutes');
+app.use('/api/products', productRoutes);
