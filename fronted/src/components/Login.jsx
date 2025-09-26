@@ -32,11 +32,11 @@ export default function Login() {
         navigate('/setpassword');
       } else {
         if (role === 'admin') {
-          navigate('/admindashboard');
+          navigate('/');
         } else if (role === 'manager') {
-          navigate('/managerdashboard');
+          navigate('/');
         } else {
-          navigate('/staffdashboard');
+          navigate('/');
         }
       }
 

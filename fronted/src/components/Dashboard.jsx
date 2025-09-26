@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
+  const location = useLocation();
+  const hideNavbar = location.pathname === '/dashboard';
+
 
   const handleSearch = e => {
   e.preventDefault();
@@ -37,7 +42,6 @@ export default function Navbar() {
     admin: [
       { label: "Inventory Search", path: "/inventorysearch" },
       { label: "Create Order", path: "/createorder" },
-      { label: "Check Stock", path: "/checkstock" },
       { label: "Update Stock", path: "/updatestock" },
       { label: "Create Stock", path: "/createstock" },
       { label: "Check User", path: "/checkuser" },
@@ -47,7 +51,6 @@ export default function Navbar() {
     manager: [
       { label: "Inventory Search", path: "/inventorysearch" },
       { label: "Create Order", path: "/createorder" },
-      { label: "Check Stock", path: "/checkstock" },
       { label: "Update Stock", path: "/updatestock" },
       { label: "My User", path: "/myprofile" },
     ],

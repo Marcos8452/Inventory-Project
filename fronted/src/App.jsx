@@ -6,7 +6,6 @@ import AdminDashboard from './components/Admin/AdminDashboard';
 import MangerDashboard from './components/MangerDashboard';
 import StaffDashboard from './components/StaffDashboard';
 import CreateOrder from './components/Admin/CreateOrder';
-import CheckStock from './components/Admin/CheckStock';
 import InventorySearch from './components/InventorySearch';
 import UpdateStock from './components/Admin/UpdateStock';
 import CheckUser from './components/Admin/CheckUser';
@@ -33,7 +32,6 @@ function App() {
         <Route path='/inventorysearch' element={<InventorySearch />} />
         <Route path='/searchbycode' element={<SearchByCode />} />
         <Route path='/createorder' element={<CreateOrder />} />
-        <Route path='/checkstock' element={<CheckStock />} />
         <Route path='/createstock' element={<CreateStock />} />
         <Route path='/updatestock' element={<UpdateStock />} />
         <Route path='/checkuser' element={<CheckUser />} />

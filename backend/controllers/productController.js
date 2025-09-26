@@ -1,13 +1,26 @@
 const Product = require('../models/Product');
 
+const generateProductCode = () => {
+  const prefix = 'PRD';
+  const random = Math.floor(100000 + Math.random() * 900000); // 6-digit random number
+  return `${prefix}-${random}`;
+};
+
 exports.createProduct = async (req, res) => {
   const { name, description, price, quantity, category } = req.body;
 
   try {
+    // Check for existing product by name
+    const existing = await Product.findOne({ name: new RegExp(`^${name}$`, 'i') });
+    if (existing) {
+      return res.status(400).json({ message: 'Product with this name already exists' });
+    }
+
     // Generate unique product code
-    const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-    const count = await Product.countDocuments();
-    const productCode = `PRD-${timestamp}-${count + 1}`;
+    let productCode;
+    do {
+      productCode = generateProductCode();
+    } while (await Product.findOne({ productCode }));
 
     const product = new Product({
       name,
